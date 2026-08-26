@@ -1,0 +1,61 @@
+{
+  "name": "fox-orthotics-e-commerce",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:admin": "npm --prefix Fox-Orthotics-Admin run build",
+    "prepare:admin": "node ./scripts/copy-admin-build.cjs",
+    "prepare:functions": "node ./scripts/copy-server-to-functions.cjs && npm --prefix backend/functions install",
+    "build:all": "npm run build && npm run build:admin && npm run prepare:admin && npm run prepare:functions",
+    "preview": "vite preview",
+    "deploy:prod": "npm run build:all && firebase deploy --only \"hosting,functions\"",
+    "optimize:images": "node scripts/optimize-images.cjs",
+    "migrate:products": "node scripts/migrate-products.cjs",
+    "migrate:products:dry-run": "node scripts/migrate-products.cjs --dry-run",
+    "optimize:all": "npm run build:all && npm run optimize:images && echo 'Images optimized! Next: npm run migrate:products:dry-run'",
+    "set:sendgrid-secret": "node ./scripts/set-sendgrid-secret.cjs"
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.1",
+    "@sendgrid/mail": "^8.1.6",
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "firebase": "^12.6.0",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "groq-sdk": "^0.36.0",
+    "node-vibrant": "^4.0.3",
+    "npx": "^3.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6",
+    "recharts": "^3.5.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.22",
+    "baseline-browser-mapping": "^2.9.19",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "description": "Full-stack Fox Orthotics e-commerce storefront, admin dashboard, API, and Firebase deployment configuration.",
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aarushi787/Orthotics-E-Commerce-Main.git"
+  },
+  "keywords": [],
+  "author": "Aarushi Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aarushi787/Orthotics-E-Commerce-Main/issues"
+  },
+  "homepage": "https://github.com/aarushi787/Orthotics-E-Commerce-Main#readme"
+}

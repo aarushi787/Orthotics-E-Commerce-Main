@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: fox-orthotics-backend
+    env: node
+    region: oregon  # or select nearest region on Render dashboard
+    plan: free
+    branch: main
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    autoDeploy: true
+    envVars:
+      - key: IMAGES_DIR_PATH
+        value: ./images
+      - key: NODE_ENV
+        value: production

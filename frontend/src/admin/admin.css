@@ -1,0 +1,10 @@
+.nav-item {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #111827;
+  transition: .3s;
+}
+
+.nav-item:hover {
+  background: #374151;
+}

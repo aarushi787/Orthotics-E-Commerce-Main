@@ -47,6 +47,7 @@ A full-stack e-commerce platform for the Fox Orthotics product catalogue. The re
 - Node.js 20 LTS
 - npm 9 or newer
 - Git
+- Git LFS for the product-image catalogue
 - A Firebase project for cloud-backed features
 - Firebase CLI for emulator or deployment workflows
 
@@ -57,6 +58,7 @@ A full-stack e-commerce platform for the Fox Orthotics product catalogue. The re
 ```bash
 git clone https://github.com/aarushi787/Orthotics-E-Commerce-Main.git
 cd Orthotics-E-Commerce-Main
+git lfs pull
 cp .env.example .env
 npm ci
 npm run dev
@@ -171,7 +173,7 @@ The root `firebase.json` serves `dist/`, rewrites `/api/**` to the `api` Cloud F
 - `public/images/` contains the canonical product-image library.
 - Product migration and image-maintenance utilities are under `scripts/` and `backend/server/scripts/`.
 
-The media library makes the initial clone relatively large. Generated `dist/` images and duplicate backup copies are not committed.
+The media library makes the initial clone relatively large. Product images are stored with Git LFS; run `git lfs install` once on a new machine and `git lfs pull` after cloning. Generated `dist/` images and duplicate backup copies are not committed.
 
 ## Security checklist
 
